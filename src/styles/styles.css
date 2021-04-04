@@ -1,0 +1,17 @@
+body {
+  background-color: #000000;
+}
+
+:root {
+  --light-grey: #222222;
+  --light-black: #121212;
+}
+
+h1 {
+  color: white;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: .4fr .6fr;
+}
