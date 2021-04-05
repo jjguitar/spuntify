@@ -1,10 +1,43 @@
-body {
-  background-color: #000000;
-}
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap');
+
+/*
+1.Posicionamiento
+2.Modelo de caja
+3.Tipografia
+4.Visuales
+5.Otros
+*/
 
 :root {
   --light-grey: #222222;
   --light-black: #121212;
+  --player-black: #181818;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+}
+
+html {
+  min-width:320px;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
@@ -14,4 +47,71 @@ h1 {
 .main {
   display: grid;
   grid-template-columns: .4fr .6fr;
+  grid-template-rows: 50px;
+  grid-template-areas: "navbar header"
+  "navbar main"
+  "player player";
 }
+
+/* Header styles */
+
+.header {
+  grid-area: header;
+  background-color: var(--light-grey);
+  border: 1px solid white;
+}
+
+.header__avatar img {
+  width: 28px;
+  border-radius: 50%;
+}
+
+.header a {
+  width: 30px;
+  height: 30px;
+}
+
+.header__arrow-back {
+  width: 30px;
+  height: 30px;
+  background-image: url('../assets/img/spotify.svg');
+}
+
+/* Header styles */
+
+/* Navbar Right */
+
+.nav-right {
+  grid-area: navbar;
+  padding: 10px;
+  border: 1px solid white;
+}
+
+.nav-right__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-right__logo img {
+  width: 100px;
+}
+/* Navbar Right */
+
+/* Main content */
+#content {
+  grid-area: main;
+  border: 1px solid white;
+}
+/* Main content */
+
+/* Player */
+
+.player {
+  grid-area: player;
+  height: 60px;
+  border: 1px solid white;
+  background-color: var(--player-black);
+}
+
+/* Player */

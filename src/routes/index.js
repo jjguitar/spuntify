@@ -1,6 +1,12 @@
+import NavRight from '../templates/NavRight.js'
+import Header from '../templates/Header.js'
+
 const router = async () => {
   const header = null || document.getElementById('header')
-  header.innerHTML = `<h1>Test JS with routes</h1>`
+  const navRight = null || document.getElementById('nav-right')
+  header.innerHTML = await Header()
+  navRight.innerHTML = await NavRight()
+
 }
 
 export default router;
