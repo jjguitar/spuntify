@@ -12,6 +12,8 @@
   --light-grey: #222222;
   --light-black: #121212;
   --player-black: #181818;
+  --gray-navbar: #282828;
+  --gray-text: #b3b3b3;
 }
 
 body {
@@ -46,7 +48,7 @@ h1 {
 
 .main {
   display: grid;
-  grid-template-columns: .4fr .6fr;
+  grid-template-columns: .43fr .57fr;
   grid-template-rows: 50px;
   grid-template-areas: "navbar header"
   "navbar main"
@@ -74,17 +76,37 @@ h1 {
 .header__arrow-back {
   width: 30px;
   height: 30px;
-  background-image: url('../assets/img/spotify.svg');
 }
 
 /* Header styles */
 
 /* Navbar Right */
 
+.container__nav-right{
+  display: flex;
+  flex-direction: column;
+}
+
 .nav-right {
+  height: calc(100vh - 60px);
   grid-area: navbar;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
   border: 1px solid white;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.nav-right > a {
+  position: fixed;
+  width: 100px;
+  bottom: 60px;
+  z-index: 2;
+  margin-bottom: 2px;
+  padding: 10px;
+  background-color: var(--light-black);
 }
 
 .nav-right__logo {
@@ -95,7 +117,70 @@ h1 {
 
 .nav-right__logo img {
   width: 100px;
+  margin-bottom: 10px;
 }
+
+.nav-right__home {
+  margin: 10px 0;
+}
+
+.icon__home {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+
+.nav-right li {
+  display: flex;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  justify-content: start;
+  align-items: center;
+  color: var(--gray-text);
+}
+
+.nav-right .gray__push{
+  background-color: var(--gray-navbar);
+  color: white;
+}
+
+.nav-right__create-playlist {
+  margin: 15px 0 10px;
+}
+
+.nav-right__create-playlist li {
+  padding: 5px 10px;
+}
+
+.plus {
+  width: 10px;
+  height: 10px;
+  border-radius: 1px;
+  background-color: white;
+  padding: 5px;
+}
+
+.heart {
+  width: 10px;
+  height: 10px;
+  border-radius: 1px;
+  background: linear-gradient(
+    135deg
+    ,#450af5,#c4efd9);
+  padding: 5px;
+}
+
+.nav-right__top-list {
+  margin: 10px 0;
+  padding: 15px 0;
+  border-top: 2px solid var(--gray-navbar);
+}
+
+.nav-right .nav-right__top-list li {
+  margin: 0;
+}
+
 /* Navbar Right */
 
 /* Main content */
@@ -112,6 +197,10 @@ h1 {
   height: 60px;
   border: 1px solid white;
   background-color: var(--player-black);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 /* Player */
