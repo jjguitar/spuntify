@@ -1,7 +1,15 @@
 const Main = () => {
   const view = `
-  <h2>Good evening</h2>
+  <h1 class="content__tittle-top">Good evening</h1>
   <div class="cards__top">
+    <div class="cards__top-item">
+      <div></div>
+      <p>Easter/Día de Resurrección</p>
+    </div>
+    <div class="cards__top-item">
+      <div></div>
+      <p>Easter/Día de Resurrección</p>
+    </div>
     <div class="cards__top-item">
       <div></div>
       <p>Easter/Día de Resurrección</p>
@@ -16,6 +24,14 @@ const Main = () => {
     </div>
   </div>
   <div class="cards__top">
+    <div class="cards__top-item">
+      <div></div>
+      <p>Easter/Día de Resurrección</p>
+    </div>
+    <div class="cards__top-item">
+      <div></div>
+      <p>Easter/Día de Resurrección</p>
+    </div>
     <div class="cards__top-item">
       <div></div>
       <p>Easter/Día de Resurrección</p>
