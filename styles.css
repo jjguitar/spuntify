@@ -29,7 +29,13 @@ html {
   scroll-behavior: smooth;
   font-family: 'Open Sans', sans-serif;
   color: white;
-  overflow: hidden;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+html::-webkit-scrollbar-thumb {
+  display: none;
 }
 
 a {
@@ -188,6 +194,7 @@ h1 {
 
 .nav-right__top-list {
   margin: 10px 0;
+  height: 270px;
   padding: 15px 0;
   border-top: 2px solid var(--gray-navbar);
 }
@@ -228,10 +235,11 @@ background: linear-gradient(180deg
 }
 
 .cards__top::-webkit-scrollbar {
-  display: none;
+  background-color: transparent;
+  height: 3px;
 }
 .cards__top::-webkit-scrollbar-thumb {
-  display: none;
+  background-color: #222222;
 }
 
 .cards__top-item {
@@ -251,7 +259,7 @@ background: linear-gradient(180deg
 }
 
 .cards__top-item div {
-  background-color: #450af5;
+  /* background-color: #450af5; */
   min-width: 80px;
   height: 80px;
   border-radius: 8px 0 0 8px;
