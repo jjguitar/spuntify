@@ -219,8 +219,47 @@ background: linear-gradient(180deg
   margin: 0;
   font-size: 2.4rem;
 }
+
+#content h2 {
+  padding: 20px;
+  /* width: calc(85vw - 215px);*/
+  margin: 0;
+  font-size: 2rem;
+}
+
+.cards__container-list {
+  margin-bottom: 80px
+}
+
+.test {
+  max-width: 244px;
+  height: 228px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #2A2D2D;
+}
+
+.test > div {
+  background-color: red;
+  width: 100%;
+  height: 135px;
+  border-radius: 4px;
+}
+
+.test h1 {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.test p {
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
 .cards__top {
-  /* width: calc(85vw - 215px); */
+  /* width: 100%; */
   padding: 0 20px;
   /* max-width: 900px; */
   margin: 0 auto;
@@ -247,7 +286,7 @@ background: linear-gradient(180deg
   scroll-snap-align: center;
   /* width: 90%; */
   min-width: 165px;
-  max-width: 250px;
+  max-width: 340px;
   height: 80px;
   display: flex;
   margin-right: 25px;
@@ -271,7 +310,7 @@ background: linear-gradient(180deg
   align-items: center;
   padding: 0 10px;
   color: white;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
