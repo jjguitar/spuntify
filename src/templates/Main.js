@@ -20,14 +20,11 @@ function cardGeneratorList(n) {
 
   for(let i = 0; i < n; i++) {
     block = block + '\n' +
-    `<div class="card__list">
-      <h2>Recently played</h2>
-      <div class="test">
-        <div style="background-color:#${randomColor()};">
-        </div>
-        <h1>Release Radar</h1>
-        <p>Catch all the latest music from artists you follow, plus mew...</p>
+    `<div class="card-recently">
+      <div class="card-img" style="background-color:#${randomColor()};">
       </div>
+      <h1>Tittle of list</h1>
+      <p>By Erick Lugo</p>
     </div>`
   }
   return block
@@ -35,15 +32,30 @@ function cardGeneratorList(n) {
 
 const Main = () => {
   const view = `
-  <h1 class="content__tittle-top">Good evening</h1>
-  <div class="cards__top">
-    ${cardGenerator(4)}
-  </div>
-  <div class="cards__top">
-    ${cardGenerator(6)}
-  </div>
-  <div class="cards__container-list">
-    ${cardGeneratorList(3)}
+  <div class="container-main">
+    <section class="greetings">
+      <h1 class="content__tittle-top">Good evening</h1>
+      <div class="container__greeting">
+        <div class="row__1">
+          ${cardGenerator(4)}
+        </div>
+        <div class="row__1">
+          ${cardGenerator(4)}
+        </div>
+      </div>
+    </section>
+    <section class="recently-played">
+      <h2>Recently played</h2>
+      <div class="container__recently">
+        ${cardGeneratorList(5)}
+      </div>
+    </section>
+    <section class="recently-played">
+      <h2>Recently played</h2>
+      <div class="container__recently">
+        ${cardGeneratorList(5)}
+      </div>
+    </section>
   </div>
   `;
   return view;
