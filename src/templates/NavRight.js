@@ -4,38 +4,47 @@ import library from '../assets/img/library.svg'
 import search from '../assets/img/search.svg'
 import plus from '../assets/img/plus.svg'
 import heart from '../assets/img/heart.svg'
+import AppController from '../API/AppController.js'
 
-const NavRight = () => {
+const getRandomInt = (min, max) => {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+const listGenerator = async () => {
+  let block = ''
+  let playlist = await AppController.playlist(getRandomInt(0,19))
+
+  playlist = playlist[1]
+  for  (let i of playlist) {
+    block = block + '\n' +
+    `
+      <li>${i.name}</li>
+    `
+  }
+
+  return block
+}
+
+const NavRight = async () => {
   const view = `
   <div>
     <div class="nav-right__logo">
-      <img src="${logo}" alt="logo">
+      <img src="${logo}" alt="logo" width="120" height="36">
     </div>
     <div class="menu__container">
       <ul class="nav-right__home">
         <li class="gray__push"><img src="${home}" class="icon__home" width="20" height="20">Home</li>
-        <li><img src="${search}" class="icon__home">Search</li>
-        <li><img src="${library}" class="icon__home">Your Library</li>
+        <li><img src="${search}" class="icon__home" width="20" height="20">Search</li>
+        <li><img src="${library}" class="icon__home" width="20" height="20">Your Library</li>
       </ul>
       <ul class="nav-right__create-playlist">
-        <li><img src="${plus}" alt="plus" class="icon__home plus">Create Playlist</li>
-        <li><img src="${heart}" alt="heart" class="icon__home heart">Liked Songs</li>
+        <li><img src="${plus}" alt="plus" class="icon__home plus" width="20" height="20">Create Playlist</li>
+        <li><img src="${heart}" alt="heart" class="icon__home heart" width="20" height="20">Liked Songs</li>
       </ul>
     </div>
     <div class="list__container">
       <ul class="nav-right__top-list">
-        <li>Franca Pizarra</li>
-        <li>Top Songs</li>
-        <li>E-Worship</li>
-        <li>This is Don</li>
-        <li>Favoritas de la radio</li>
-        <li>Discovery Weekly</li>
-        <li>Franca Pizarra</li>
-        <li>Top Songs</li>
-        <li>E-Worship</li>
-        <li>This is Don</li>
-        <li>Favoritas de la radio</li>
-        <li>Discovery Weekly</li>
+        ${await listGenerator()}
       </ul>
     </div>
   </div>

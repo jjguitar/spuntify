@@ -493,6 +493,12 @@ footer {
   background-color: violet;
 }
 
+.player__song-actual img {
+  width: 56px;
+  height: 56px;
+  margin-right: 10px;
+}
+
 .heart__actual-song {
   margin-right: 10px;
 }

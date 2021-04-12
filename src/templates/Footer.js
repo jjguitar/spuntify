@@ -10,8 +10,31 @@ import micro from '../assets/img/micro.svg'
 import playlist from '../assets/img/playlist.svg'
 import sync from '../assets/img/sync.svg'
 import volume from '../assets/img/volume.svg'
+import AppController from '../API/AppController.js'
 
-const Footer = () => {
+const getRandomInt = (min, max) => {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+const getSong = async () => {
+  let playlist;
+  playlist = await AppController.playlist(getRandomInt(0,19))
+  playlist = playlist[1]
+  let tracks = playlist[getRandomInt(0, playlist.length - 1)]
+  let endPoint = tracks.tracks.href
+  let songs = await AppController.getTracks(endPoint)
+  songs = songs[getRandomInt(0, songs.length - 1)].track
+  let song = songs.name
+  let cover = songs.album.images[2].url
+  let artist = songs.artists[0].name
+
+  return [song, cover, artist]
+}
+
+const Footer = async () => {
+
+  let dataSong = await getSong()
+
   const view = `
     <div id="install-app">
       <img src="${download}" alt="download" width="24">
@@ -19,10 +42,12 @@ const Footer = () => {
     </div>
     <div class="player-control">
       <div class="player__song">
-        <div class="player__song-actual"></div>
+        <div class="player__song-actual">
+          <img src="${dataSong[1]}" width="64" height="64" alt="cover">
+        </div>
         <div class="player__song-tittle">
-          <h4>Por Mí Murió</h4>
-          <p>Hillsong en español</p>
+          <h4>${dataSong[0]}</h4>
+          <p>${dataSong[2]}</p>
         </div>
         <img class="heart__actual-song"src="${heart}" alt="heart" width="16">
         <img src="${max}" alt="max">
