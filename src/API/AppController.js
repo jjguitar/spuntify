@@ -12,13 +12,9 @@ const getCookie = name => {
   return null;
 };
 
-const AppController = (function() {
+const AppController = (() => {
 
-  function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
-
-  const _playlist = async () => {
+  const _playlist = async (genre) => {
     let gen =[]
     await APIController.getToken()
     const genres = await APIController.getGenres(getCookie('BearerToken'))
@@ -26,10 +22,7 @@ const AppController = (function() {
       id: element.id,
       name: element.name,
     }));
-    console.log(gen)
-    let listRandom = getRandomInt(0, gen.length)
-    // console.log(gen[listRandom])
-    return [gen[listRandom], await APIController.getPlaylistByGenre(getCookie('BearerToken'), gen[listRandom].id)]
+    return [gen[genre], await APIController.getPlaylistByGenre(getCookie('BearerToken'), gen[genre].id)]
   }
 
   const _getTracks = async (endPoint) => {
@@ -37,8 +30,8 @@ const AppController = (function() {
   }
 
   return {
-    playlist() {
-        return _playlist();
+    playlist(genre) {
+        return _playlist(genre);
     },
     getTracks(endPoint) {
       return _getTracks(endPoint);

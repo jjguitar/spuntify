@@ -1,4 +1,4 @@
-const APIController = (function() {
+const APIController = (() => {
 
   const clientId = '0b5d68ec183745c88d11fefac1c2ae1c';
   const clientSecret = '429ee0e54a514f86b5270c07644df3c2';

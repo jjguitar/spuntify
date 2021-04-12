@@ -1,17 +1,21 @@
 import AppController from '../API/AppController.js'
 
-function cardGenerator(playlist) {
-  let n = playlist.length
-  let block1 = ''
-  let block2 = ''
-  // console.log(playlist)
+const cardGenerator = async () => {
+  let playlist;
+  let n;
+  let block1 = '';
+  let block2 = '';
+
+  playlist = await AppController.playlist(0)
+  playlist = playlist[1]
+  n = playlist.length
 
   for(let i = 0; i < n; i++) {
     if (i < n / 2) {
       block1 = block1 + '\n' +
     `<div class="cards__top-item">
       <div>
-        <img src="${playlist[i].images[0].url}" width="80">
+        <img src="${playlist[i].images[0].url}" width="80" height="80" alt="capture">
       </div>
       <p>${playlist[i].name}</p>
     </div>`
@@ -19,7 +23,7 @@ function cardGenerator(playlist) {
       block2 = block2 + '\n' +
     `<div class="cards__top-item">
       <div>
-        <img src="${playlist[i].images[0].url}" width="80">
+        <img src="${playlist[i].images[0].url}" width="80" height="80" alt="capture">
       </div>
       <p>${playlist[i].name}</p>
     </div>`
@@ -36,19 +40,18 @@ function cardGenerator(playlist) {
   `
 }
 
-function generatorCards(tracks) {
+const generatorCards = (playlist) => {
   let block = ''
-  // console.log(tracks)
-  for (let i of tracks) {
-    // console.log(i.track.album.artists[0].name)
+
+  for (let i of playlist) {
     block = block + '\n' +
     `
         <div class="card-recently">
           <div class="card-img">
-            <img src="${i.track.album.images[1].url}" alt="img" width="160">
+            <img src="${i.images[0].url}" alt="img" width="160">
           </div>
-          <h1 class="card-recently__tittle">${i.track.name}</h1>
-          <p class"card-recently__artist">By ${i.track.album.artists[0].name}</p>
+          <h1 class="card-recently__tittle">${i.name}</h1>
+          <p class"card-recently__artist">By ${i.owner.display_name}</p>
         </div>
     `
   }
@@ -60,45 +63,38 @@ function generatorCards(tracks) {
   `
 }
 
+const getRandomInt = (min, max) => {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 const cardGeneratorList = async () => {
-  let playlist = await AppController.playlist()
-  let genre = playlist[0]
-  playlist = playlist[1]
-  let n = playlist.length
-  let blockSection = ''
-  console.log(playlist)
-  console.log(genre)
+  let blockSection = '';
 
-  const cardGenerator = async (n) => {
-    for(let i = 1; i < n ; i++) {
-      let endPoint = playlist[i].tracks.href
-      let tracks = await AppController.getTracks(endPoint)
-      blockSection = blockSection + '\n' +
-      `
-      <section class="recently-played">
-        <h2>${playlist[i].name}</h2>
-        ${generatorCards(tracks)}
-      </section>
-      `
-    }
-  }
+  for(let i = 1; i < 8 ; i++) {
+    let generatorGenre = getRandomInt(1, 20)
+    let playlist = await AppController.playlist(generatorGenre)
+    let genre = playlist[0]
 
-  if (n < 2) {
-    await cardGenerator(n)
-  } else {
-    await cardGenerator(n / 2)
+    playlist = playlist[1]
+    blockSection = blockSection + '\n' +
+    `
+    <section class="recently-played">
+      <h2>${genre.name}</h2>
+      ${generatorCards(playlist)}
+    </section>
+    `
   }
 
   return blockSection
 }
 
-const Main = async (playlist) => {
+const Main = async () => {
   const view = `
   <div class="container-main">
     <section class="greetings">
       <h1 class="content__tittle-top">Good evening</h1>
       <div class="container__greeting">
-        ${cardGenerator(playlist)}
+        ${await cardGenerator()}
       </div>
     </section>
     ${await cardGeneratorList()}

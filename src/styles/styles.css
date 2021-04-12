@@ -71,14 +71,12 @@ body {
   height: 60px;
   top: 0;
   background-color: #1F1F1F;
-  /* border: 1px solid white; */
 }
 
 .header__avatar img {
   width: 28px;
   border-radius: 50%;
 }
-
 
 .header__arrow-back {
   display: flex;
@@ -111,30 +109,9 @@ body {
   grid-area: navbar;
   width: 224px;
   flex-direction: column;
-  /* justify-content: space-between; */
-  /* padding: 20px 10px 10px; */
-  /* border: 1px solid white; */
   font-size: 1.4rem;
   font-weight: bold;
 }
-
-.nav-right {
-  
-  scroll-snap-align: center;
-  overflow-y: scroll;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: y proximity;
-}
-
-.nav-right::-webkit-scrollbar {
-  background-color: transparent;
-  height: 3px;
-}
-.nav-right::-webkit-scrollbar-thumb {
-  background-color: transparent;
-}
-
-
 
 .nav-right__home {
   padding: 0 5px;
@@ -144,10 +121,6 @@ body {
 .nav-right__home li {
   height: 40px;
 }
-/* .container__nav-right{
-  display: flex;
-  flex-direction: column;
-} */
 
 .nav-right > a {
   position: fixed;
@@ -172,8 +145,6 @@ body {
   margin-bottom: 10px;
   padding-left: 10px;
 }
-
-
 
 .icon__home {
   width: 24px;
@@ -228,11 +199,6 @@ li:hover {
   padding: 5px;
 }
 
-/* .nav-right__top-list {
-  /* margin: 10px 0; */
-  /* height: 270px; */
-  /* padding: 15px 0; */
-
 .nav-right .nav-right__top-list li {
   padding: 0 15px;
 }
@@ -254,6 +220,7 @@ li:hover {
 /* Navbar Right */
 
 /* Main content */
+
 #content {
   grid-area: main;
   position: relative;
@@ -303,7 +270,6 @@ li:hover {
 
 .container__greeting::-webkit-scrollbar {
   background-color: transparent;
-  
   height: 3px;
 }
 
@@ -314,13 +280,6 @@ li:hover {
 .container__greeting > div {
   white-space: nowrap;
 }
-
-/* #content h2 {
-  padding: 20px;
-  /* width: calc(85vw - 215px);*/
-  /* margin: 0;
-  font-size: 2rem;
-}  */
 
 .cards__container-list {
   margin-bottom: 80px
@@ -354,9 +313,7 @@ li:hover {
 }
 
 .cards__top {
-  /* width: 100%; */
   padding: 0 20px;
-  /* max-width: 900px; */
   margin: 0 auto;
   margin-right: 10px;
   display: flex;
@@ -388,14 +345,12 @@ li:hover {
   margin-bottom: 5px;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   border-radius: 8px;
   background-color: #2A2D2D;
   box-shadow: 0px 4px 8px rgb(89 73 30 / 16%);
 }
 
 .cards__top-item div{
-  /* background-color: #450af5; */
   min-width: 80px;
   height: 80px;
   border-radius: 8px 0 0 8px;
@@ -435,7 +390,7 @@ li:hover {
 
 .container__recently::-webkit-scrollbar {
   background-color: transparent;
-  height: 3px;
+  height: 5px;
 }
 
 .container__recently::-webkit-scrollbar-thumb {
@@ -479,16 +434,6 @@ li:hover {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-}
-
-@media (min-width: 650px) {
-  /* .cards__top {
-    height: 120px;
-  }
-  .cards__top-item {
-    /* min-height: 100px; */
-    /*min-width: 230px;
-  } */
 }
 
 /* Main content */
@@ -538,7 +483,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 10px;
+  padding: 10px 20px;
 }
 
 .player__song-actual {
@@ -586,9 +531,9 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px;
+  padding: 15px 15px 0;
   width: 100%;
-  height: 50%;
+  height: 60%;
 }
 
 .controls > img {
@@ -617,15 +562,15 @@ footer {
 
 .progress-bar {
   display: flex;
-  padding: 10px;
+  padding: 0 10px 10px;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 45%;
+  height: 40%;
 }
 
 .bar-1 {
-  width: 85%;
+  width: 80%;
   max-width: 642px;
   margin-left: 20px;
   height: 5px;
@@ -674,5 +619,38 @@ footer {
 @media (max-width: 520px) {
   .nav-right, #install-app {
     width: 170px;
+  }
+}
+
+@media (max-width: 500px) {
+  .player__song {
+    display: none;
+  }
+
+  .player-control {
+    grid-template-columns: 1fr
+  }
+}
+
+@media (max-width: 410px) {
+  .nav-right {
+    display: none;
+  }
+}
+
+@media (max-height: 440px) {
+  .nav-right {
+    scroll-snap-align: center;
+    overflow-y: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: y proximity;
+  }
+
+  .nav-right::-webkit-scrollbar {
+    background-color: transparent;
+    height: 3px;
+  }
+  .nav-right::-webkit-scrollbar-thumb {
+    background-color: transparent;
   }
 }
