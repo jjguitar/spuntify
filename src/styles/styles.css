@@ -475,6 +475,12 @@ li:hover {
   border-radius: 4px;
 }
 
+.card-recently__tittle, .card-recently__artist {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 @media (min-width: 650px) {
   /* .cards__top {
     height: 120px;

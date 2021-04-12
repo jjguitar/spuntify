@@ -1,4 +1,4 @@
-import APIController from '../API/APIController.js'
+import AppController from '../API/AppController.js'
 
 function cardGenerator(playlist) {
   let n = playlist.length
@@ -36,21 +36,6 @@ function cardGenerator(playlist) {
   `
 }
 
-function randomColor() {
-  return Math.floor(Math.random()*16777215).toString(16);
-}
-
-const getCookie = name => {
-  let nameEQ = name + "=";
-  let ca = document.cookie.split(";");
-  for (var i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === " ") c = c.substring(1, c.length);
-    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-  }
-  return null;
-};
-
 function generatorCards(tracks) {
   let block = ''
   // console.log(tracks)
@@ -59,11 +44,11 @@ function generatorCards(tracks) {
     block = block + '\n' +
     `
         <div class="card-recently">
-          <div class="card-img" style="background-color:#${randomColor()};">
+          <div class="card-img">
             <img src="${i.track.album.images[1].url}" alt="img" width="160">
           </div>
-          <h1>${i.track.name}</h1>
-          <p>By ${i.track.album.artists[0].name}</p>
+          <h1 class="card-recently__tittle">${i.track.name}</h1>
+          <p class"card-recently__artist">By ${i.track.album.artists[0].name}</p>
         </div>
     `
   }
@@ -75,21 +60,35 @@ function generatorCards(tracks) {
   `
 }
 
-const cardGeneratorList = async (playlist) => {
+const cardGeneratorList = async () => {
+  let playlist = await AppController.playlist()
+  let genre = playlist[0]
+  playlist = playlist[1]
   let n = playlist.length
   let blockSection = ''
+  console.log(playlist)
+  console.log(genre)
 
-  for(let i = 1; i < n / 2; i++) {
-    let endPoint = playlist[i].tracks.href
-    let tracks = await APIController.getTracks(getCookie('BearerToken'), endPoint)
-    blockSection = blockSection + '\n' +
-    `
-    <section class="recently-played">
-      <h2>${playlist[i].name}</h2>
-      ${generatorCards(tracks)}
-    </section>
-    `
+  const cardGenerator = async (n) => {
+    for(let i = 1; i < n ; i++) {
+      let endPoint = playlist[i].tracks.href
+      let tracks = await AppController.getTracks(endPoint)
+      blockSection = blockSection + '\n' +
+      `
+      <section class="recently-played">
+        <h2>${playlist[i].name}</h2>
+        ${generatorCards(tracks)}
+      </section>
+      `
+    }
   }
+
+  if (n < 2) {
+    await cardGenerator(n)
+  } else {
+    await cardGenerator(n / 2)
+  }
+
   return blockSection
 }
 
@@ -102,7 +101,7 @@ const Main = async (playlist) => {
         ${cardGenerator(playlist)}
       </div>
     </section>
-    ${await cardGeneratorList(playlist)}
+    ${await cardGeneratorList()}
   `;
   return view;
 };
