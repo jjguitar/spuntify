@@ -23,7 +23,6 @@ const getSong = async () => {
   playlist = playlist[1]
   let tracks = playlist[getRandomInt(0, playlist.length - 1)]
   let endPoint = tracks.id
-  console.log(endPoint)
   let songs = await AppController.getTracks(endPoint)
   songs = songs[0].track
   let song = songs === null ? 'Unknown' : songs.name

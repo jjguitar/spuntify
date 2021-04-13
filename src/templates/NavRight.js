@@ -18,7 +18,7 @@ const listGenerator = async () => {
   for  (let i of playlist) {
     block = block + '\n' +
     `
-      <li>${i.name}</li>
+      <a href="#/${i.id}/"><li>${i.name}</li></a>
     `
   }
 
@@ -33,7 +33,7 @@ const NavRight = async () => {
     </div></a>
     <div class="menu__container">
       <ul class="nav-right__home">
-        <li class="gray__push"><img src="${home}" class="icon__home" width="20" height="20">Home</li>
+      <a href="/"><li class="gray__push"><img src="${home}" class="icon__home" width="20" height="20">Home</li></a>
         <li><img src="${search}" class="icon__home" width="20" height="20">Search</li>
         <li><img src="${library}" class="icon__home" width="20" height="20">Your Library</li>
       </ul>
@@ -43,7 +43,7 @@ const NavRight = async () => {
       </ul>
     </div>
     <div class="list__container">
-      <ul class="nav-right__top-list">
+      <ul class="nav-right__top-list" id="nav-right__top-list">
         ${await listGenerator()}
       </ul>
     </div>

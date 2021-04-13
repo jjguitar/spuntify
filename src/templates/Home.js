@@ -79,7 +79,7 @@ const getRandomInt = (min, max) => {
 const cardGeneratorList = async () => {
   let blockSection = '';
 
-  for(let i = 1; i < 8 ; i++) {
+  for(let i = 1; i < 4 ; i++) {
     let generatorGenre = getRandomInt(1, 20)
     let playlist = await AppController.playlist(generatorGenre)
     let genre = playlist[0]

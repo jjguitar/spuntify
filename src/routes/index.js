@@ -16,17 +16,22 @@ const routes = {
 const router = async () => {
   const header = null || document.getElementById('header')
   const navRight = null || document.getElementById('nav-right')
+  const navList = null || document.getElementById('nav-right__top-list')
   const home = null || document.getElementById('content')
   const footer = null || document.getElementById('player')
 
-  header.innerHTML = await Header()
-  navRight.innerHTML = await NavRight()
-  footer.innerHTML = await Footer()
+  if (navList !== null && navList.hasChildNodes()) {
+    //console.log('children')
+  } else {
+    header.innerHTML = await Header()
+    navRight.innerHTML = await NavRight()
+    footer.innerHTML = await Footer()
+  }
+
   let hash = getHash();
-  // console.log(hash)
   let route = await resolveRoutes(hash);
-  // console.log(route)
   let render = routes[route] ? routes[route] : Home;
+
   home.innerHTML = await render()
 
 }
