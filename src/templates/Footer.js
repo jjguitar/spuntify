@@ -24,7 +24,7 @@ const getSong = async () => {
   let endPoint = tracks.tracks.href
   let songs = await AppController.getTracks(endPoint)
   songs = songs[getRandomInt(0, songs.length - 1)].track
-  let song = songs.name
+  let song = songs.name === null ? 'Unknown' : songs.name
   let cover = songs.album.images[2].url
   let artist = songs.artists[0].name
 

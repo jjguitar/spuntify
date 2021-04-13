@@ -12,21 +12,27 @@ const cardGenerator = async () => {
 
   for(let i = 0; i < n; i++) {
     if (i < n / 2) {
+      console.log(playlist[i])
       block1 = block1 + '\n' +
-    `<div class="cards__top-item">
+    `<a href="#/${playlist[i].id}/">
+    <div class="cards__top-item">
       <div>
         <img src="${playlist[i].images[0].url}" width="80" height="80" alt="capture">
       </div>
       <p>${playlist[i].name}</p>
-    </div>`
+    </div>
+    </a>
+    `
     } else {
       block2 = block2 + '\n' +
-    `<div class="cards__top-item">
+    `<a href="#/${playlist[i].id}/">
+    <div class="cards__top-item">
       <div>
         <img src="${playlist[i].images[0].url}" width="80" height="80" alt="capture">
       </div>
       <p>${playlist[i].name}</p>
-    </div>`
+    </div>
+    </a>`
     }
   }
 
