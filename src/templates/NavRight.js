@@ -28,9 +28,9 @@ const listGenerator = async () => {
 const NavRight = async () => {
   const view = `
   <div>
-    <div class="nav-right__logo">
+    <a href="/" ><div class="nav-right__logo">
       <img src="${logo}" alt="logo" width="120" height="36">
-    </div>
+    </div></a>
     <div class="menu__container">
       <ul class="nav-right__home">
         <li class="gray__push"><img src="${home}" class="icon__home" width="20" height="20">Home</li>

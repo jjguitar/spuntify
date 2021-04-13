@@ -12,7 +12,7 @@ const cardGenerator = async () => {
 
   for(let i = 0; i < n; i++) {
     if (i < n / 2) {
-      console.log(playlist[i])
+      // console.log(playlist[i])
       block1 = block1 + '\n' +
     `<a href="#/${playlist[i].id}/">
     <div class="cards__top-item">
@@ -50,15 +50,18 @@ const generatorCards = (playlist) => {
   let block = ''
 
   for (let i of playlist) {
+    // console.log(i)
     block = block + '\n' +
     `
-        <div class="card-recently">
-          <div class="card-img">
-            <img src="${i.images[0].url}" alt="img" width="160">
-          </div>
-          <h1 class="card-recently__tittle">${i.name}</h1>
-          <p class"card-recently__artist">By ${i.owner.display_name}</p>
+    <a href="#/${i.id}/">
+      <div class="card-recently">
+        <div class="card-img">
+          <img src="${i.images[0].url}" alt="img" width="160">
         </div>
+        <h1 class="card-recently__tittle">${i.name}</h1>
+        <p class"card-recently__artist">By ${i.owner.display_name}</p>
+      </div>
+    </a>
     `
   }
 
@@ -94,7 +97,7 @@ const cardGeneratorList = async () => {
   return blockSection
 }
 
-const Main = async () => {
+const Home = async () => {
   const view = `
   <div class="container-main">
     <section class="greetings">
@@ -108,4 +111,4 @@ const Main = async () => {
   return view;
 };
 
-export default Main;
+export default Home;

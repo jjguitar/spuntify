@@ -2,7 +2,7 @@ import arrow from '../assets/img/left-arrow.svg'
 
 const Header = () => {
   const view = `
-  <a class="header__arrow-back">
+  <a href="javascript: history.go(-1)" class="header__arrow-back">
     <img src="${arrow}" alt="arrow">
   </a>
   <div class="header__avatar">

@@ -4,6 +4,7 @@ import max from '../assets/img/max.svg'
 import back from '../assets/img/back-song.svg'
 import play from '../assets/img/play.svg'
 import random from '../assets/img/random.svg'
+import broken from '../assets/img/broken.png'
 import repeat from '../assets/img/repeat.svg'
 import expand from '../assets/img/expand.svg'
 import micro from '../assets/img/micro.svg'
@@ -21,12 +22,13 @@ const getSong = async () => {
   playlist = await AppController.playlist(getRandomInt(0,19))
   playlist = playlist[1]
   let tracks = playlist[getRandomInt(0, playlist.length - 1)]
-  let endPoint = tracks.tracks.href
+  let endPoint = tracks.id
+  console.log(endPoint)
   let songs = await AppController.getTracks(endPoint)
-  songs = songs[getRandomInt(0, songs.length - 1)].track
-  let song = songs.name === null ? 'Unknown' : songs.name
-  let cover = songs.album.images[2].url
-  let artist = songs.artists[0].name
+  songs = songs[0].track
+  let song = songs === null ? 'Unknown' : songs.name
+  let cover = songs === null ? broken : songs.album.images[2].url
+  let artist = songs === null ? 'Unknown' : songs.artists[0].name
 
   return [song, cover, artist]
 }

@@ -1,4 +1,3 @@
-
 import APIController from '../API/APIController.js'
 
 const getCookie = name => {
@@ -29,12 +28,19 @@ const AppController = (() => {
     return await APIController.getTracks(getCookie('BearerToken'), endPoint)
   }
 
+  const _getPlaylistById = async (id) => {
+    return await APIController.getPlaylistById(getCookie('BearerToken'), id)
+  }
+
   return {
     playlist(genre) {
         return _playlist(genre);
     },
     getTracks(endPoint) {
       return _getTracks(endPoint);
+    },
+    getPlaylistById(id) {
+      return _getPlaylistById(id);
     },
   }
 })();

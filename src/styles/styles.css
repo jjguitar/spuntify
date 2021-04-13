@@ -24,6 +24,10 @@
   list-style: none;
 }
 
+a {
+  color: inherit;
+}
+
 html {
   min-width:320px;
   font-size: 62.5%;

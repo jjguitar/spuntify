@@ -55,11 +55,24 @@ const APIController = (() => {
     return data.playlists.items;
   }
 
+  const _getPlaylistById = async (token, playlist_id) => {
+
+    const limit = 12;
+
+    const result = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}?limit=${limit}`, {
+        method: 'GET',
+        headers: { 'Authorization' : 'Bearer ' + token}
+    });
+
+    const data = await result.json();
+    return data;
+  }
+
   const _getTracks = async (token, tracksEndPoint) => {
 
-    const limit = 7;
-
-    const result = await fetch(`${tracksEndPoint}?limit=${limit}`, {
+    const limit = 7;//"https://api.spotify.com/v1/playlists/37i9dQZF1DXcBWIGoYBM5M/tracks"
+    // console.log(`https://api.spotify.com/v1/playlists/${tracksEndPoint}/tracks?limit=${limit}`)
+    const result = await fetch(`https://api.spotify.com/v1/playlists/${tracksEndPoint}/tracks?limit=${limit}`, {
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + token}
     });
@@ -80,6 +93,9 @@ const APIController = (() => {
     },
     getTracks(token, tracksEndPoint) {
       return _getTracks(token, tracksEndPoint);
+    },
+    getPlaylistById(token, playlist_id) {
+      return _getPlaylistById(token, playlist_id);
     },
   }
 })();
