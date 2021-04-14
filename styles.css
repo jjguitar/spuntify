@@ -876,7 +876,7 @@ footer {
 @media (max-width: 680px) {
 
   .playlist__table-container {
-    grid-template-columns: [index] 16px [first] 4fr [last] minmax(60px,1fr);
+    grid-template-columns: [index] 18px [first] 4fr [last] minmax(60px,1fr);
   }
 
   .playlist-title__plays, .playlist__album-name {
