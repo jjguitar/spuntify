@@ -89,7 +89,7 @@ const Tracks = async () => {
             <span class="artist">${track.track.artists[0].name}</span>
           </span>
         </span>
-        <span>${track.track.album.name}</span>
+        <span class="playlist__album-name">${track.track.album.name}</span>
         <span class="playlist-plays">${msToTime(track.track.duration_ms, true)}</span>
       </div>
     `
