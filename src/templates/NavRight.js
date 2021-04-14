@@ -28,12 +28,12 @@ const listGenerator = async () => {
 const NavRight = async () => {
   const view = `
   <div>
-    <a href="/spuntify/" ><div class="nav-right__logo">
+    <a href="#/home" ><div class="nav-right__logo">
       <img src="${logo}" alt="logo" width="120" height="36">
     </div></a>
     <div class="menu__container">
       <ul class="nav-right__home">
-      <a href="/spuntify/" ><li class="gray__push"><img src="${home}" class="icon__home" width="20" height="20">Home</li></a>
+      <a href="#/home" ><li class="gray__push"><img src="${home}" class="icon__home" width="20" height="20">Home</li></a>
         <li><img src="${search}" class="icon__home" width="20" height="20">Search</li>
         <li><img src="${library}" class="icon__home" width="20" height="20">Your Library</li>
       </ul>

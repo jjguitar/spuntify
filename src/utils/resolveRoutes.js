@@ -2,6 +2,8 @@ const resolveRoutes = (route) => {
   if (route != 'about'){
       if (route === '/'){
           return route
+      }else if (route.includes('home')){
+        return '/:home'
       }else if (route.length <= 23){
           return '/:id'
       }else if (route.includes('page')){

@@ -8,6 +8,7 @@ import resolveRoutes from "../utils/resolveRoutes";
 
 const routes = {
   "/spuntify": Home,
+  "/:home": Home,
   "/:id": Tracks,
   "/contact": "Contact",
   '/:pages': Home,
@@ -30,9 +31,10 @@ const router = async () => {
   }
 
   let hash = getHash();
-  // console.log(hash)
+  console.log(hash)
   header.style.background = `#1F1F1F`
   let route = await resolveRoutes(hash);
+  console.log(route)
   let render = routes[route] ? routes[route] : Home;
 
   if (routes[route] === Tracks) {
