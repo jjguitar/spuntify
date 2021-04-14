@@ -18,6 +18,7 @@ const router = async () => {
   const navRight = null || document.getElementById('nav-right')
   const navList = null || document.getElementById('nav-right__top-list')
   const home = null || document.getElementById('content')
+  home.innerHTML = ''
   const footer = null || document.getElementById('player')
 
   if (navList !== null && navList.hasChildNodes()) {
@@ -29,11 +30,16 @@ const router = async () => {
   }
 
   let hash = getHash();
-  console.log(hash)
+  // console.log(hash)
+  header.style.background = `#1F1F1F`
   let route = await resolveRoutes(hash);
   let render = routes[route] ? routes[route] : Home;
 
-  home.innerHTML = await render()
+  if (routes[route] === Tracks) {
+    await render()
+  } else {
+    home.innerHTML = await render()
+  }
 
 }
 
