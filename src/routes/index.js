@@ -7,7 +7,7 @@ import getHash from "../utils/getHash";
 import resolveRoutes from "../utils/resolveRoutes";
 
 const routes = {
-  "/": Home,
+  "/spuntify": Home,
   "/:id": Tracks,
   "/contact": "Contact",
   '/:pages': Home,
@@ -29,6 +29,7 @@ const router = async () => {
   }
 
   let hash = getHash();
+  console.log(hash)
   let route = await resolveRoutes(hash);
   let render = routes[route] ? routes[route] : Home;
 
