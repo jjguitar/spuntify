@@ -644,6 +644,7 @@ footer {
 .playlist__info .description {
   color: var(--gray-text);
   font-weight: normal;
+  margin-bottom: 10px;
 }
 
 .playlist__info-social-media > p > span {
@@ -742,6 +743,14 @@ footer {
   display: flex;
   flex-direction: column;
   font-size: 1.6rem;
+  width: 70%;
+}
+
+.track-detail span {
+  width: 95%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .track-container {
@@ -760,7 +769,7 @@ footer {
 /* End Playlist */
 
 
-@media (min-width: 715px) {
+@media (min-width: 780px) {
   .player-control {
     grid-template-columns: .3fr auto 300px;
   }
@@ -808,12 +817,6 @@ footer {
   }
 }
 
-@media (max-width: 410px) {
-  .nav-right {
-    display: none;
-  }
-}
-
 @media (max-height: 440px) {
   .nav-right {
     scroll-snap-align: center;
@@ -828,5 +831,54 @@ footer {
   }
   .nav-right::-webkit-scrollbar-thumb {
     background-color: transparent;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-container__playlist {
+    flex-direction: column;
+    padding-top: 60px;
+  }
+
+  .playlist__capture {
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+
+  .playlist__info {
+    width: 100%;
+  }
+
+  .playlist__info h1 {
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
+@media (max-width: 425px) {
+
+  .nav-right {
+    display: none;
+  }
+
+  #install-app {
+    display: none;
+  }
+}
+
+@media (max-width: 320px) {
+  .playlist__info h1 {
+    font-size: 3.8rem;
+  }
+}
+
+@media (max-width: 680px) {
+
+  .playlist__table-container {
+    grid-template-columns: [index] 16px [first] 4fr [last] minmax(60px,1fr);
+  }
+
+  .playlist-title__plays, .playlist__album-name {
+    display: none;
   }
 }
